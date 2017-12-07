@@ -2,4 +2,4 @@
 Example of experiment code
 
 ## File Lists
-1. *websocket_client*:  [websocket_client.c](https://github.com/wettper/experiment_demo/blob/master/websocket_client.c)
+1. *websocket client demo*:  [websocket_client.c](https://github.com/wettper/experiment_demo/blob/master/websocket_client.c)
