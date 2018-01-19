@@ -11,7 +11,6 @@ int main ()
             fprintf(stderr, "create pthread error: %s \n", strerror(errno));
             exit(1);
         }
-        sleep(1);
     }
 
     for (i = 0; i < THREAD_NUMS; i++) {
