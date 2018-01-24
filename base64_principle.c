@@ -19,7 +19,7 @@ const char base64char[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0
  * @return int          base64字符串长度
  *
  */
-int base64_encode( const uint8_t *bindata, char *base64, int binlength)
+static int base64_encode( const uint8_t *bindata, char *base64, int binlength)
 {
     int i, j;
     uint8_t current;
