@@ -23,12 +23,16 @@ static int base64_encode( const uint8_t *bindata, char *base64, int binlength)
 {
     int i, j;
     uint8_t current;
+    /*每三个字符, 即3*8bit*/
     for ( i = 0, j = 0 ; i < binlength ; i += 3 ) {
+        /*前6bit*/
         current = (bindata[i] >> 2) ;
         current &= (uint8_t)0x3F;
         base64[j++] = base64char[(int)current];
 
+        /*7~8bit*/
         current = ( (uint8_t)(bindata[i] << 4 ) ) & ( (uint8_t)0x30 ) ;
+        /*就此结尾*/
         if ( i + 1 >= binlength ) {
             base64[j++] = base64char[(int)current];
             base64[j++] = '=';
@@ -36,19 +40,24 @@ static int base64_encode( const uint8_t *bindata, char *base64, int binlength)
             break;
         }
 
+        /*9~12bit, 并连接7~8bit*/
         current |= ( (uint8_t)(bindata[i+1] >> 4) ) & ( (uint8_t) 0x0F );
         base64[j++] = base64char[(int)current];
 
+        /*13~16bit*/
         current = ( (uint8_t)(bindata[i+1] << 2) ) & ( (uint8_t)0x3C ) ;
+        /*就此结尾*/
         if ( i + 2 >= binlength ) {
             base64[j++] = base64char[(int)current];
             base64[j++] = '=';
             break;
         }
 
+        /*17~18bit, 并连接13~16bit*/
         current |= ( (uint8_t)(bindata[i+2] >> 6) ) & ( (uint8_t) 0x03 );
         base64[j++] = base64char[(int)current];
 
+        /*19~24bit*/
         current = ( (uint8_t)bindata[i+2] ) & ( (uint8_t)0x3F ) ;
         base64[j++] = base64char[(int)current];
     }
