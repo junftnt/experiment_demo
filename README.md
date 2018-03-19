@@ -6,3 +6,4 @@ Example of experiment code
 2. *websocket server*:  [websocket_server.c](https://github.com/wettper/experiment_demo/blob/master/websocket_server.c)
 3. *an example of autotools*:  [autotoolsdemo](https://github.com/wettper/experiment_demo/blob/master/autotoolsdemo)
 4. *the coding principle of base64*:  [base64_principle.c](https://github.com/wettper/experiment_demo/blob/master/base64_principle.c)
+5. *daemonize*:  [daemonize.c](https://github.com/wettper/experiment_demo/blob/master/daemonize.c)
