@@ -7,4 +7,4 @@ Example of experiment code
 3. *an example of autotools*:  [autotoolsdemo](https://github.com/wettper/experiment_demo/blob/master/autotoolsdemo)
 4. *the coding principle of base64*:  [base64_principle.c](https://github.com/wettper/experiment_demo/blob/master/base64_principle.c)
 5. *daemonize*:  [daemonize.c](https://github.com/wettper/experiment_demo/blob/master/daemonize.c)
-6. *data_structure*:  [data_structure](https://github.com/wettper/experiment_demo/blob/master/data_structure)
+6. *data structure*:  [data_structure](https://github.com/wettper/experiment_demo/blob/master/data_structure)
