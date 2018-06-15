@@ -1,4 +1,4 @@
-/*链栈 实现四目运算表达式*/
+/*逆波兰法 - 链栈 实现四目运算表达式*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,6 +41,7 @@ static int top(Stacks *s, char *e)
     if (s->count == 0) {
         return FALSE;
     }
+    memset(e, 0, CHAR_LEN);
     strcpy(e, s->top->data);
     return TRUE;
 }
@@ -60,6 +61,7 @@ static int pop(Stacks *s, char *e)
     if (s->count == 0) {
         return FALSE;
     }
+    memset(e, 0, CHAR_LEN);
     strcpy(e, s->top->data);
     Node *tmp = s->top;
     s->top = (Node *)tmp->next;
@@ -79,6 +81,16 @@ static void clear(Stacks *s)
 static int length(Stacks *s)
 {
     return s->count;
+}
+
+static void showLinked(Stacks *s)
+{
+    Node *tmp = s->top;
+    while (tmp) {
+        printf("data: %c, next: %p \n", tmp->data, (void *)tmp->next);
+        tmp = (Node *)tmp->next;
+    }
+    printf("\n");
 }
 
 /*优先级*/
@@ -106,24 +118,49 @@ static int priority(char e)
 
 int main ()
 {
+    Stacks *o_s = calloc(1, sizeof(Stacks));
     Stacks *n_s = calloc(1, sizeof(Stacks));
+    init(o_s);
     init(n_s);
 
-    char o_express[EXPRESS_LEN], n_express[EXPRESS_LEN], k[CHAR_LEN];
+    char o_express[EXPRESS_LEN], k[CHAR_LEN];
     memset(o_express, 0, EXPRESS_LEN);
-    memset(n_express, 0, EXPRESS_LEN);
-    memset(k, 0, CHAR_LEN);
 
     printf("please input your express: ");
     /*fgets(o_express, EXPRESS_LEN, stdin);*/
     strcpy(o_express, " 9 + 2 * ( 3 - 1) ");
     
-    printf("\n\ninput: %s \n", o_express);
+    printf("\n\ninput: %s \n\n", o_express);
     int i, n = 0, len = strlen(o_express);
     for (i = 0; i < len; i ++) {
-        if (o_express[i] != ' ' && o_express[i] != '\0') {
-            int pri = priority(o_express[i]);
-            printf("express %d: %c \n", pri, o_express[i]);
+        char tmp = o_express[i];
+        if (tmp != ' ' && tmp != '\0') {
+            int pri = priority(tmp);
+            if (pri == -1) {
+                push(n_s, (char*)&tmp);
+            } else if (pri == 0){
+                push(o_s, (char*)&tmp);
+            } else if (pri == 3) {
+                top(o_s, k);
+                while (priority(k[0]) != 0) {
+                    pop(o_s, k); 
+                    if (priority(k[0]) != 0) {
+                        push(n_s, k);
+                    }
+                }
+            } else {
+                top(o_s, k);
+                if (pri < priority(k[0])) {
+                    while (pri < priority(k[0])) {
+                        pop(o_s, k); 
+                        push(n_s, k);
+                    }
+                } else {
+                    push(o_s, (char*)&tmp);
+                }
+            }
+            showLinked(o_s);
+            showLinked(n_s);
         }
     }
 
