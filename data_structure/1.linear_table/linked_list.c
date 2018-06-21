@@ -1,4 +1,6 @@
 /*链表 增删改查*/
+/*优点：增删 O(1)*/
+/*缺点：查找 O(n)*/
 
 #include <stdio.h>
 #include <stdlib.h>

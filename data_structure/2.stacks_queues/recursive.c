@@ -36,7 +36,6 @@ static int robot_recursive(int nums)
     for (i = 0; i < nums; i ++) {
         printf("当前天数: %d, 当前兔子对数: %d \n", i, robot_recursive_fun(i));
     }
-    
 }
 
 

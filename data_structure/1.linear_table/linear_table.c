@@ -1,4 +1,6 @@
 /*线性表 增删改查*/
+/*优点：查找 O(1)*/
+/*缺点：增删 O(n)*/
 
 #include <stdio.h>
 #include <stdlib.h>

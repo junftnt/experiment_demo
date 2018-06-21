@@ -1,4 +1,9 @@
 /*链栈*/
+/*栈：后进先出*/
+
+/*每个结点构成链表 (单链或者双向链表)*/
+/*链表栈存储头结点以及个数*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
