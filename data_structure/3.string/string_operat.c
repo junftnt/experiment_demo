@@ -62,9 +62,21 @@ static void case_conversion(char *from)
 static int find_str_nums(char *from, char *find)
 {
     assert(from != NULL && find != NULL);
-    while (*ptr != '\0') {
-        *ptr ++;
+    int i, j, ok, oknum = 0, frlen = strlen(from), filen = strlen(find);
+    for (i = 0; i < frlen; i ++) {
+        ok = TRUE;
+        for (j = 0; j < filen; j ++) {
+            if (from[i+j] != find[j]) {
+                ok = FALSE;
+                break;
+            }
+        }
+        if (ok == TRUE) {
+            oknum ++;
+        }
     }
+
+    return oknum; 
 }
 
 int main ()
@@ -79,7 +91,7 @@ int main ()
 
     case_conversion(from);
 
-    char find[] = "aB";
+    char find[] = "bA";
     printf("%d\n", find_str_nums(from, find));
 
     return 0;
