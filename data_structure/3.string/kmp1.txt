@@ -1,0 +1,25 @@
+﻿i=	0	1	2	3	4	5	6	7	8	9
+	a	b	a	b	a	b	a	b	c	a
+j=	0	1	2	3	4	5	6	7		
+	a	b	a	b	a	b	c	a		
+n=	-1	0	0	1	2	3	4	0
+while (i < len && j < slen) {
+	if (j == -1 || str[i] == search[j]) {                                                                                         
+		i++;
+		j++;
+	} else {
+		j = next[j];
+	}   
+}       
+i = 1; j = 1
+i = 2; j = 2
+i = 3; j = 3
+i = 4; j = 4
+i = 5; j = 5
+i = 6; j = 6
+i = 6; j = 4
+i = 7; j = 5
+i = 8; j = 6
+i = 9; j = 7
+
+
