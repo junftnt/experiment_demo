@@ -1,4 +1,6 @@
-﻿i=	0	1	2	3	4	5	6	7	8	9
+﻿kmp匹配演算，n代表 next 数组
+
+i=	0	1	2	3	4	5	6	7	8	9
 	a	b	a	b	a	b	a	b	c	a
 j=	0	1	2	3	4	5	6	7		
 	a	b	a	b	a	b	c	a		
